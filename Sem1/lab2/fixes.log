@@ -1,0 +1,21 @@
+1.Опечатка Studio вместо stdio
+
+main.c:9:9: fatal error: studio.h: Нет такого файла или каталога
+ #include<studio.h>
+         ^~~~~~~~~~
+
+
+2.Пропущена ;
+
+main.c: In function ‘Main’:
+main.c:24:5: error: expected ‘;’ before ‘printf’
+     printf("Введите число квартир на каждом этаже: ");
+     ^~~~~~
+
+3. обращение к Main вместо main
+
+/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/bin/ld: /usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crt1.o: в функции «_start»:
+/home/abuild/rpmbuild/BUILD/glibc-2.26/csu/../sysdeps/x86_64/start.S:110: неопределённая ссылка на «main»
+collect2: error: ld returned 1 exit status
+
+4.
