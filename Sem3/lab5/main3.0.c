@@ -34,10 +34,10 @@ typedef struct _node {
 
 void printList(Node *head){
     while(head){
-        printf("%d", head -> value);
+        printf("%d ", head -> value);
         head = head -> next;
     }
-    printf("\n");
+    printf("\n\n");
 }
 
 int nofTheLast = 0;
@@ -148,14 +148,20 @@ Node* removeFirst(Node *head){
 int main(){
     int n;
     char data[100];
+    printf("Creating list\n");
+    printf("Enter the value: ");
     scanf("%s", data);
     Node *head = (Node*)malloc(sizeof(Node));
     head -> value = atoi(data);
     head -> next = NULL;
+    printf("Current list: ");
+    printList(head);
     while(1){
+        printf("Enter the value: ");
         scanf("%s", data);
         if (atoi(data) != 0 || data[0] == '0'){
             addInEnd(head, atoi(data));
+            printf("Current list: ");
             printList(head);
         }
         else{
