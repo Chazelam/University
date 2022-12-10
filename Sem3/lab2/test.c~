@@ -1,7 +1,0 @@
-#include <stdio.h> //Connecting Libraries
-
-int main() // function creation
-{
-    printf("Hello world"); // output "Hello world"
-    return 0;
-}
