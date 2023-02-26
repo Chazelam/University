@@ -22,11 +22,10 @@
 
 int main(){
     Node *root = createTree();
-
-    inOrder(root);
-
     printf("Tree in direct order: ");
     printInDirectOrder(root);
+    printf("\n");
+    inOrder(root);
     printf("\n");
     printf("Tree in reverse order: ");
     printInReverseOrder(root);
