@@ -33,7 +33,7 @@ int main(){
         if (!strcmp(hash_table[index], "***"))
             strcpy(hash_table[index], table[i]);
         else{
-            strcpy(overflow[i], table[i]);
+            strcpy(overflow[over_num], table[i]);
             over_num++;
         }
     }
@@ -47,5 +47,25 @@ int main(){
         if (strcmp(overflow[i], "***"))
             printf("%d  %s\n", i, overflow[i]);
     }
+    char word[6] = "Brusov";
+    char key[4]; key[3] = 0;
+    strncpy(key, word, 3);
+    int index = get_index(get_hash(key), hash_table_len);
+    if (!strcmp(hash_table[index], word)){
+        printf("Found in place %d of hash table\n", index);
+        return 0;
+    }
+    else{
+        int place = 0;
+        for(int i = 0; i < hash_table_len; i++){
+            if (!strcmp(overflow[place], word)){
+                printf("Found in place %d of overflow\n", place);
+                return 0;
+           }
+           place++;
+        }
+    }
+    printf("Not found\n");
+    return 1;
     //printf("%d - %d\n", get_hash("Raz")%40, get_hash("Zin")%40);
 }
