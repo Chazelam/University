@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "lib.h"
 
 const char* input(){
@@ -15,4 +18,8 @@ unsigned int get_hash(const char* str){
         hash = 37 * hash + *str;
 
     return hash;
+}
+
+int get_index(int hash, int n){
+    return hash % n;
 }

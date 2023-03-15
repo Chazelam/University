@@ -3,26 +3,10 @@
 #include <string.h>
 #include "lib.h"
 
-unsigned int get_hash(const char* str){
-    unsigned int hash = 2139062143;
-    for(; *str; str++)
-        hash = 37 * hash + *str;
-
-    return hash;
-}
-
-int get_index(int hash, int n){
-    return hash % n;
-}
-
-const char* input(){
-    char word[20];
-    printf("Search: ");
-    scanf("%s", word);
-    const char* s = malloc(strlen(word));
-    strcpy(s, word);
-    return s;
-}
+// Компиляция:
+// gcc -g -c lib.c
+// gcc -g -c main.c
+// gcc -o min main.o lib.o
 
 int main(){
     char table[6][20] = {"Razin", "Lyamzin", "Brusov", "Rootov", "Belonin", "Zinkevich"};
