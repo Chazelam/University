@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "lib.h"
 
 unsigned int get_hash(const char* str){
     unsigned int hash = 2139062143;
@@ -14,6 +15,15 @@ int get_index(int hash, int n){
     return hash % n;
 }
 
+const char* input(){
+    char word[20];
+    printf("Search: ");
+    scanf("%s", word);
+    const char* s = malloc(strlen(word));
+    strcpy(s, word);
+    return s;
+}
+
 int main(){
     char table[6][20] = {"Razin", "Lyamzin", "Brusov", "Rootov", "Belonin", "Zinkevich"};
     int hash_table_len = 40;
@@ -25,6 +35,7 @@ int main(){
         strcpy(overflow[i], "***");
     }
 
+    // Создание таблицы
     for(int i = 0; i < 6; i++){
         char key[4]; key[3] = 0;
         strncpy(key, table[i], 3);
@@ -37,6 +48,8 @@ int main(){
             over_num++;
         }
     }
+
+    // Вывод таблицы
     printf("Hash:\n");
     for(int i = 0; i < hash_table_len; i++){
         if (strcmp(hash_table[i], "***"))
@@ -47,8 +60,13 @@ int main(){
         if (strcmp(overflow[i], "***"))
             printf("%d  %s\n", i, overflow[i]);
     }
-    char word[6] = "Brusov";
-    char key[4]; key[3] = 0;
+
+    // Поиск
+    const char* temp = input();
+    char word[20];
+    strcpy(word, temp);
+    printf("%s\n", word);
+    char key[3];
     strncpy(key, word, 3);
     int index = get_index(get_hash(key), hash_table_len);
     if (!strcmp(hash_table[index], word)){
@@ -67,5 +85,4 @@ int main(){
     }
     printf("Not found\n");
     return 1;
-    //printf("%d - %d\n", get_hash("Raz")%40, get_hash("Zin")%40);
 }
