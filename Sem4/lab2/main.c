@@ -49,8 +49,7 @@ int main(){
     const char* temp = input();
     char word[20];
     strcpy(word, temp);
-    printf("%s\n", word);
-    char key[3];
+    char key[4]; key[3] = 0;
     strncpy(key, word, 3);
     int index = get_index(get_hash(key), hash_table_len);
     if (!strcmp(hash_table[index], word)){
