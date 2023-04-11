@@ -6,7 +6,8 @@
 // Компиляция:
 // gcc -g -c lib.c
 // gcc -g -c main.c
-// gcc -o min main.o lib.o
+// gcc -shared -fPIC -o lib.so  -c lib.c
+// gcc -o main main.o lib.o
 
 int main(){
     char table[6][20] = {"Razin", "Lyamzin", "Brusov", "Rootov", "Belonin", "Zinkevich"};
@@ -23,7 +24,8 @@ int main(){
     for(int i = 0; i < 6; i++){
         char key[4]; key[3] = 0;
         strncpy(key, table[i], 3);
-        int key_hash = get_hash(key);
+        int key_hash = get_hash(table[i]);
+        printf("%s %d\n", key, key_hash);
         int index = get_index(key_hash, hash_table_len);
         if (!strcmp(hash_table[index], "***"))
             strcpy(hash_table[index], table[i]);
