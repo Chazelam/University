@@ -47,33 +47,100 @@ class MachineGraf extends Frame {
 
     public void paint(Graphics g){
         g.setColor(Color.black);
-        // int x12[] = {100, 160, 160, 100};
-        // int y12[] = {100, 100, 160, 160};
-        int x12[] = {0, 60, 60, 0};
-        int y12[] = {0, 0, 60, 60};
+        int x12[] = {100, 160, 160, 100};
+        int y12[] = {100, 100, 160, 160};
+        g.drawPolygon(x12, y12, 4);
         int newX12[] = new int[4];
         int newY12[] = new int[4];
         g.drawLine(50, 50, 50, 210);
         g.drawLine(40, 200, 200, 200);
-        
-        for (int t =0; t<=1;  t++){
-            // double cos = Math.cos(t*10);
-            // double sin = Math.sin(t*10);
-            int k = (int)((x12[0] - (x12[1]*Math.pow(0.9, t)))/2);
+        for (int t = 1; t<40;  t++){
             for (int i = 0; i<4; i++){
-                int newX = (int)((x12[i]*Math.pow(0.9, t)));//(int)((x12[i]*cos + y12[i]*sin)*k + 100);
-                int newY = (int)((y12[i]*Math.pow(0.9, t)));//- (int)((y12[i]*cos - x12[i]*sin)*k + 300);
-                // System.out.print(k);
-                // System.out.print("\n");
-                newX12[i] = newX +100 + k;
-                newY12[i] = newY +100 + k;
-                x12[i] = newX;
-                y12[i] = newY;
-                
+                int n;
+                if (i != 3){
+                    n = i + 1;
+                } else{
+                    n = 0;
+                }
+                double vector[] = {x12[n] - x12[i], y12[n] - y12[i]};
+                vector[0] = vector[0] * 0.08;
+                vector[1] = vector[1] * 0.08;
+                newX12[i] = (int)vector[0] + x12[i];
+                newY12[i] = (int)vector[1] + y12[i];
+                System.out.print(newX12[i]);
+                System.out.print("\n");
             }
             g.drawPolygon(newX12, newY12, 4);
+            x12 = newX12.clone();
+            y12 = newY12.clone();
         }
+    }
+}
 
+
+class RectRecurs extends Frame {
+    RectRecurs(){
+        setSize(400, 400);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent ev) {
+                System.exit(0);
+            }
+        });
+        setVisible(true);
+    }
+
+    public void paint(Graphics g){
+        int X = 100;
+        int Y = 100;
+        int W = 200;
+        int H = 200;
+        g.drawOval(X, Y, W, H);
+        rec(X, Y, W, H, 4, g);
+    }
+    private void rec(int X, int Y, int W, int H, int n, Graphics g){
+        if (n>0)
+        {n--;
+            int nX = (int)(X - H/4);
+            int nY = (int)(Y + H/4);
+            g.drawOval(nX, nY, W/2, H/2);
+            rec(nX, nY, W/2, H/2, n, g);
+            nX = (int)(X + H/4);
+            nY = (int)(Y - H/4);
+            g.drawOval(nX, nY, W/2, H/2);
+            rec(nX, nY, W/2, H/2, n, g);
+            nX = (int)(X + 3*H/4);
+            nY = (int)(Y + H/4);
+            g.drawOval(nX, nY, W/2, H/2);
+            rec(nX, nY, W/2, H/2, n, g);
+            nX = (int)(X + H/4);
+            nY = (int)(Y + 3*H/4);
+            g.drawOval(nX, nY, W/2, H/2);
+            rec(nX, nY, W/2, H/2, n, g);
+        }
+    }
+}
+
+class Atom extends Frame {
+    Atom(){
+        setSize(450, 450);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent ev) {
+                System.exit(0);
+            }
+        });
+        setVisible(true);
+    }
+
+    public void paint(Graphics g){
+        g.fillOval(170, 170, 30, 30);
+        int X = 100;
+        int Y = 300;
+        int W = 200;
+        int H = 50;
+        g.drawOval(X, Y, W, H);
+        int nX = (int)(X*Math.cos(15) + Y*Math.sin(15));
+        int nY = (int)(Y*Math.cos(15) - X*Math.sin(15));
+        g.drawOval(nX, nY, W, H);
     }
 }
 
@@ -81,5 +148,7 @@ class Program{
     public static void main(String[] args) {
         new Rocket();
         new MachineGraf();
+        new RectRecurs();
+        // new Atom();
     }
 }
