@@ -54,7 +54,7 @@ class MachineGraf extends Frame {
         int newY12[] = new int[4];
         g.drawLine(50, 50, 50, 210);
         g.drawLine(40, 200, 200, 200);
-        for (int t = 1; t<40;  t++){
+        for (int j = 1; j<40;  j++){
             for (int i = 0; i<4; i++){
                 int n;
                 if (i != 3){
@@ -132,23 +132,62 @@ class Atom extends Frame {
     }
 
     public void paint(Graphics g){
-        g.fillOval(170, 170, 30, 30);
-        int X = 100;
-        int Y = 300;
-        int W = 200;
-        int H = 50;
-        g.drawOval(X, Y, W, H);
-        int nX = (int)(X*Math.cos(15) + Y*Math.sin(15));
-        int nY = (int)(Y*Math.cos(15) - X*Math.sin(15));
-        g.drawOval(nX, nY, W, H);
+        int X, Y, nX, nY;
+        int a = 150; int b = 40;
+        int l1 = 40; int l2 = 130;
+        for (int i = 0; i<360; i++){
+            double t = i*3.1415/180;
+            X = (int)(a*Math.cos(t));
+            Y = (int)(b*Math.sin(t));
+            nX = (int)(X*Math.cos(l1) + Y*Math.sin(l1)) + 200;
+            nY = (int)(Y*Math.cos(l1) - X*Math.sin(l1)) + 200;
+            g.drawOval(nX, nY, 1, 1);
+
+            nX = (int)(X*Math.cos(l2) + Y*Math.sin(l2)) + 200;
+            nY = (int)(Y*Math.cos(l2) - X*Math.sin(l2)) + 200;
+            g.drawOval(nX, nY, 1, 1);
+        }
+        for (int t = 0; t<360; t++){
+            X = (int)(a*Math.cos(t)) + 200;
+            Y = (int)(b*Math.sin(t)) + 200;
+            g.drawOval(X, Y, 1, 1);
+        }
+        for (int t = 0; t<360; t++){
+            X = (int)(5*Math.cos(t)) + 200;
+            Y = (int)(5*Math.sin(t)) + 200;
+            g.fillOval(X, Y, 5, 5);
+        }
+    }
+}
+
+class Four extends Frame {
+    Four(){
+        setSize(450, 450);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent ev) {
+                System.exit(0);
+            }
+        });
+        setVisible(true);
+    }
+
+    public void paint(Graphics g){
+        int x = 0, y = 0;
+        double A = 110.3, B = 1.9, C = -42.1;
+        for (int i = 0; i<20000; i++){
+            x = (int)(y - Math.signum(x)*(Math.sqrt(Math.abs(B*x - C))));
+            y = (int)(A - x);
+            g.drawLine(x+200, y+200, x+200, y+200);
+        }
     }
 }
 
 class Program{
     public static void main(String[] args) {
-        new Rocket();
-        new MachineGraf();
-        new RectRecurs();
+        // new Rocket();
+        // new MachineGraf();
+        // new RectRecurs();
         // new Atom();
+        new Four();
     }
 }
