@@ -1,3 +1,6 @@
+package Sem4.lab3;
+
+import java.util.List;
 import java.util.Scanner;
 import java.lang.Math;
 
@@ -59,7 +62,7 @@ abstract class Figure{
      
     float x; // x-координата точки
     float y; // y-координата точки
-  
+    List part;
     
     public abstract void create();
     public abstract double area();

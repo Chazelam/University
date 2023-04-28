@@ -168,7 +168,7 @@ class SierpinskiСurve extends Frame {
             sg.setGraphics(offscrGfx);
         }
 
-        int level = 1;
+        int level = 3;
         dist = dist0;
         for (int i = level; i > 0; i--)
             dist /= 2;
@@ -301,8 +301,8 @@ class Program{
         // new Rocket();
         // new SquarRecursion();
         // new CircleRecursion();
-        new SierpinskiСurve();
+        // new SierpinskiСurve();
         // new Atom();
-        // new Four();
+        new Four();
     }
 }
