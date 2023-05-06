@@ -8,8 +8,8 @@ class Plot extends Frame implements ActionListener{
     TextField setA;
     TextField setB;
     Button MyDraw;
-    int A = 0; //5
-    int B = 0; //11
+    int A = 0;
+    int B = 0;
 
     Plot(){
         setLayout(null);

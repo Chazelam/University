@@ -1,6 +1,5 @@
 package Sem4.lab3;
 
-import java.util.List;
 import java.util.Scanner;
 import java.lang.Math;
 
@@ -14,11 +13,11 @@ class calculate {
         // Найти пириметр ABCD по заданным сторонам AB, AC и DC
         // BAC, BCD - Прямоугольные треугольники
         Scanner in = new Scanner(System.in);
-        System.out.print("Enter AB - ");  
-        double AB = in.nextInt();  
-        System.out.print("Enter AC - ");  
-        double AC = in.nextInt(); 
-        System.out.print("Enter DC - ");  
+        System.out.print("Enter AB - ");
+        double AB = in.nextInt();
+        System.out.print("Enter AC - ");
+        double AC = in.nextInt();
+        System.out.print("Enter DC - ");
         double DC = in.nextInt();
         double BC = calculate.hypotenuse(AC, AB);
         double BD = calculate.hypotenuse(BC,DC);
@@ -59,11 +58,7 @@ class calculate {
 
 // абстрактный класс фигуры
 abstract class Figure{
-     
-    float x; // x-координата точки
-    float y; // y-координата точки
-    List part;
-    
+
     public abstract void create();
     public abstract double area();
 }
@@ -74,7 +69,7 @@ class Equilateral_traingle extends Figure
     Equilateral_traingle() {
         this.a = 0;
     }
-     
+
     public double area(){
         return (Math.sqrt(3)/4)*a*a;
     }
@@ -95,7 +90,7 @@ class Isosceles_trapezium extends Figure{
         this.c = 0;
 
     }
-     
+
     public double area(){
         return ((a + b)/4)*Math.sqrt(4*c*c - (a - b)*(a - b));
     }
@@ -114,10 +109,10 @@ class Program{
     public static void main(String[] args) {
         Equilateral_traingle t = new Equilateral_traingle();
         t.create();
-        System.out.println(t.area()); 
+        System.out.println(t.area());
 
         Isosceles_trapezium tr = new Isosceles_trapezium();
         tr.create();
-        System.out.println(tr.area()); 
+        System.out.println(tr.area());
     }
 }
