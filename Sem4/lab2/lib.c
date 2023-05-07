@@ -1,24 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>`  
+#include <math.h>
 #include "lib.h"
 
 const char* input(){
     char word[20];
     printf("Search: ");
     scanf("%s", word);
-    const char* s = malloc(strlen(word));
+    char* s = malloc(strlen(word));
     strcpy(s, word);
     return s;
 }
 
-char* slice(char*s, int from, int to) { 
-    int j = 0; 
-    for(int i = from; i <= to; ++i) 
-        s[j++] = s[i]; 
-    s[j] = 0; 
-    return s; 
+char* slice(char*s, int from, int to) {
+    int j = 0;
+    for(int i = from; i <= to; ++i)
+        s[j++] = s[i];
+    s[j] = 0;
+    return s;
 }
 
 unsigned int get_hash(const char* str){
@@ -44,7 +44,7 @@ int get_index(int hash, int n){
 }
 
 // int main(){
-//     printf("%d\n", get_hash("hello"));
+//     printf("%d\n", get_index(get_hash("Razin"), 40));
 //     printf("%d\n", get_hash("byeee"));
 //     printf("%d\n", get_hash("esdgd"));
 // }
