@@ -10,9 +10,9 @@
 
 
 int main(){
-    char table[6][20] = {"Razin", "Lyamzin", "Brusov", "Rootov", "Belonin", "Zinkevich"};
-    int table_len = 6;
-    int hash_table_len = 40;
+    char table[131][20] = {"Benjamins", "Decker", "Fensel", "Gomez-Perez", "Erdmann", "Fensel", "Studer", "Witten", "Frank", "Mark", "Burling", "Morgan", "Kaufmann", "Clarke", "Fokoue", "Zhang", "Aggarwal", "Atroschenko", "Lisenko", "Petrichenko", "Surtaev", "Chiglikova", "Minnegalieva", "Mukhamedshin", "Rusetski", "Parkalov", "Jeffrey", "Atherton", "Bertalanffy", "Boulding", "Feinstein", "Shivalingaiah", "Matthew", "Smith", "Lindberg", "Poibeau", "Acoulon", "Avaux", "Beroff", "Cadeau", "Calberg", "Delale", "Temmerman", "Guenet", "Huis", "Jamalpour", "Krul", "Marcus", "Picoli", "Plancq", "Hudson", "Lengler", "Cocea", "Hershkovitz", "Aleven", "Hernandez", "Eppler", "Mesarovic", "Watanabe", "Wasson", "Kabassi", "Virvou", "Dorca", "Lopes", "Fernandez", "Rushforth", "Yoder", "Luke", "Cioffi", "Wille", "Ganter", "Revilla", "Pinker", "Rosch", "Sowa", "Panait", "Hawkins", "Lakoff", "Mikhailov", "Kasai", "Yamaguchi", "Nagano", "Mizoguchi", "Sullivan", "Dicheva", "Sosnovsky", "Brusilovsky", "Guha", "Downes", "Novak", "Canas", "Lenat", "Frenster", "Sanchez", "Sands", "Wiskoff", "Pittman", "First", "Spitzer", "Gibbon", "Pratt", "Bercken", "Spiegel", "Nenh", "Shepherd", "Amosig", "Escara", "Martinez", "Paculanang", "Yusoff", "Mavrikis", "Davidson", "Efimenko", "Drobyazko", "Kananykina", "Klintsov", "Lisitsin", "Seledkin", "Starostin", "Vorobyov", "Cunningham", "Maynard", "Bontcheva", "Tablan", "Nirenburg", "Raskin", "Berners-Lee", "Hendler", "Lassila", "Appelt", "Israel"};
+    int table_len = 131;
+    int hash_table_len = 400;
     char hash_table[hash_table_len][20];
     char overflow[hash_table_len][20];
     int over_num = 0;
